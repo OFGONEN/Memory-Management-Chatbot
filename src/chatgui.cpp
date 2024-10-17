@@ -133,8 +133,9 @@ ChatBotPanelDialog::~ChatBotPanelDialog() {
   //// STUDENT CODE
   ////
 
-  //Since ChatLogic is now handles via an Unique Pointer we don't need to manually delete the object
-  
+  // Since ChatLogic is now handles via an Unique Pointer we don't need to
+  // manually delete the object
+
   // delete _chatLogic;
 
   ////
