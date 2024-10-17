@@ -7,7 +7,9 @@ GraphNode::~GraphNode() {
   //// STUDENT CODE
   ////
 
-  delete _chatBot;
+  // Since ChatBot is Handle by ChatLogic and it is a Unique Resource
+  // No other than ChatLogic should delete ChatBot
+  // delete _chatBot;
 
   ////
   //// EOF STUDENT CODE
