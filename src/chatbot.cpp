@@ -45,20 +45,20 @@ ChatBot::~ChatBot() {
 ChatBot::ChatBot(const ChatBot &source) {
   std::cout << "ChatBot Copy Constructor" << std::endl;
 
-  //wxBitmap has a copy constructor
+  // wxBitmap has a copy constructor
   _image = new wxBitmap(*source._image);
   _chatLogic = source._chatLogic;
   _rootNode = source._rootNode;
 }
 
 // Copy Assignment Operator
-ChatBot& ChatBot::operator=(const ChatBot &source) {
+ChatBot &ChatBot::operator=(const ChatBot &source) {
   std::cout << "ChatBot Copy Assignment Operator" << std::endl;
 
   if (this == &source)
     return *this;
 
-  //wxBitmap has a copy constructor
+  // wxBitmap has a copy constructor
   _image = new wxBitmap(*source._image);
   _chatLogic = source._chatLogic;
   _rootNode = source._rootNode;
@@ -80,7 +80,7 @@ ChatBot::ChatBot(ChatBot &&source) {
 }
 
 // Move Assignment Operator
-ChatBot& ChatBot::operator=(ChatBot &&source) {
+ChatBot &ChatBot::operator=(ChatBot &&source) {
   std::cout << "ChatBot Move Assignment Operator" << std::endl;
 
   if (this == &source)
