@@ -10,6 +10,10 @@ GraphNode::~GraphNode() {
   // Since ChatBot is Handle by ChatLogic and it is a Unique Resource
   // No other than ChatLogic should delete ChatBot
   // delete _chatBot;
+  
+  // Since child GraphEdge's are stored in a vector and in a unique pointer
+  // We don't need to manually delete GraphEdges
+
 
   ////
   //// EOF STUDENT CODE
@@ -21,8 +25,8 @@ void GraphNode::AddEdgeToParentNode(GraphEdge *edge) {
   _parentEdges.push_back(edge);
 }
 
-void GraphNode::AddEdgeToChildNode(GraphEdge *edge) {
-  _childEdges.push_back(edge);
+void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge) {
+  _childEdges.push_back(std::move(edge));
 }
 
 //// STUDENT CODE
@@ -43,7 +47,7 @@ GraphEdge *GraphNode::GetChildEdgeAtIndex(int index) {
   //// STUDENT CODE
   ////
 
-  return _childEdges[index];
+  return _childEdges[index].get();
 
   ////
   //// EOF STUDENT CODE
