@@ -42,9 +42,11 @@ ChatLogic::~ChatLogic() {
   // delete *it;
   // }
 
+  //Since GraphEdge objects are owned by GraphNode objects
+  //We don't need to manually delete them.
   // delete all edges
-  for (auto it = std::begin(_edges); it != std::end(_edges); ++it) {
-    delete *it;
+  // for (auto it = std::begin(_edges); it != std::end(_edges); ++it) {
+    // delete *it;
   }
 
   ////
