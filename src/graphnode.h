@@ -2,9 +2,9 @@
 #define GRAPHNODE_H_
 
 #include "chatbot.h"
+#include <memory>
 #include <string>
 #include <vector>
-#include <memory>
 
 // forward declarations
 class GraphEdge;
@@ -16,7 +16,8 @@ private:
 
   // data handles (owned)
   // std::vector<GraphEdge *> _childEdges; // edges to subsequent nodes
-  std::vector<std::unique_ptr<GraphEdge>> _childEdges; // edges to subsequent nodes
+  std::vector<std::unique_ptr<GraphEdge>>
+      _childEdges; // edges to subsequent nodes
 
   // data handles (not owned)
   std::vector<GraphEdge *> _parentEdges; // edges to preceding nodes

@@ -10,10 +10,9 @@ GraphNode::~GraphNode() {
   // Since ChatBot is Handle by ChatLogic and it is a Unique Resource
   // No other than ChatLogic should delete ChatBot
   // delete _chatBot;
-  
+
   // Since child GraphEdge's are stored in a vector and in a unique pointer
   // We don't need to manually delete GraphEdges
-
 
   ////
   //// EOF STUDENT CODE
