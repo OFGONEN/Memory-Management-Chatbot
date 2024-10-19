@@ -17,12 +17,13 @@ ChatLogic::ChatLogic() {
   //// STUDENT CODE
   ////
 
-  // create instance of chatbot
-  _chatBot = new ChatBot("../images/chatbot.png");
+  // Creation of ChatBot instance will be done at LoadAnswerGraphFromFile method
+  //  create instance of chatbot
+  //  _chatBot = new ChatBot("../images/chatbot.png");
 
   // add pointer to chatlogic so that chatbot answers can be passed on to the
   // GUI
-  _chatBot->SetChatLogicHandle(this);
+  // _chatBot->SetChatLogicHandle(this);
 
   ////
   //// EOF STUDENT CODE
@@ -32,8 +33,10 @@ ChatLogic::~ChatLogic() {
   //// STUDENT CODE
   ////
 
-  // delete chatbot instance
-  delete _chatBot;
+  // Since the ownership of the chat bot is passed to graphnodes
+  // we don't need to delete it
+  //  delete chatbot instance
+  //  delete _chatBot;
 
   // vector _nodes will invoke destructor of all its members
   // So we don't need to manually delete all the _node members
@@ -42,12 +45,12 @@ ChatLogic::~ChatLogic() {
   // delete *it;
   // }
 
-  //Since GraphEdge objects are owned by GraphNode objects
-  //We don't need to manually delete them.
-  // delete all edges
-  // for (auto it = std::begin(_edges); it != std::end(_edges); ++it) {
-    // delete *it;
-  }
+  // Since GraphEdge objects are owned by GraphNode objects
+  // We don't need to manually delete them.
+  //  delete all edges
+  //  for (auto it = std::begin(_edges); it != std::end(_edges); ++it) {
+  //  delete *it;
+  // }
 
   ////
   //// EOF STUDENT CODE
@@ -230,8 +233,13 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
   }
 
   // add chatbot to graph root node
-  _chatBot->SetRootNode(rootNode);
-  rootNode->MoveChatbotHere(_chatBot);
+  ChatBot chatBot("../images/chatbot.png");
+  chatBot.SetChatLogicHandle(this);
+  chatBot.SetRootNode(rootNode);
+
+  rootNode->MoveChatbotHere(std::move(chatBot));
+  // _chatBot->SetRootNode(rootNode);
+  // rootNode->MoveChatbotHere(_chatBot);
 
   ////
   //// EOF STUDENT CODE
